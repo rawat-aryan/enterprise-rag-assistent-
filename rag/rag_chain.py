@@ -4,7 +4,10 @@ from langchain_core.output_parsers import StrOutputParser
 
 def build_rag_chain(vectorstore, llm):
 
-    retriver = vectorstore.as_retriever(search_kwargs={"k": 3})
+    retriever = vectorstore.as_retriever(
+        search_type = "mmr",
+        search_kwargs={"k": 3, "fetch_k": 8}
+        )
 
     prompt = ChatPromptTemplate.from_template("""
 You are a helpful assistant.
@@ -23,7 +26,7 @@ Answer:
     
     rag_chain =(
         {
-            "context": retriver | format_docs,
+            "context": retriever | format_docs,
             "question": RunnablePassthrough()
         }
         | prompt
@@ -31,4 +34,4 @@ Answer:
         | StrOutputParser()
     )
 
-    return rag_chain
+    return rag_chain,retriever
