@@ -1,3 +1,5 @@
+from graph.tools import keyword_fallback_tool
+
 def rewrite_node(state, rewriter):
     question = state["question"]
     rewritten = rewriter.invoke({"question": question})
@@ -21,3 +23,8 @@ def retry_node(state, retriever):
     query = state["question"]
     docs = retriever.invoke(query)
     return {"documents": docs}
+
+
+def tool_node(state):
+    return keyword_fallback_tool(state)
+
