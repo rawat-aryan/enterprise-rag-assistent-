@@ -1,0 +1,30 @@
+# Core LangChain ecosystem
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+
+# LangGraph for agentic workflows
+langgraph
+
+# HuggingFace embeddings
+langchain-huggingface
+sentence-transformers
+transformers
+
+# PDF loading
+pypdf
+
+# Vector database (FAISS)
+faiss-cpu
+
+# Gemini integration
+langchain-google-genai
+google-generativeai
+
+# API Deployment
+fastapi
+uvicorn
+
+# Utility
+python-dotenv
